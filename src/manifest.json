@@ -1,21 +1,25 @@
 {
   "manifest_version": 3,
-  "name": "Tooling migration visual helper",
-  "version": "1.0.0",
-  "description": "Make the old and the new jira instance easily recognisible",
-  "permissions": ["scripting", "activeTab", "storage"],
-  "action": {
-    "default_popup": "tmvh.html",
-    "default_icon": "tmvh.png"
-  },
+  "name": "Color Changer Extension",
+  "version": "1.0",
+  "description": "Allows users to change the background color of the page on atlassian.net domains.",
+  "permissions": [
+    "storage",
+    "activeTab",
+    "tabs",
+    "scripting"
+  ],
   "background": {
-    "service_worker": "service-worker.js"
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "tmvh.png"
   },
   "content_scripts": [
     {
-      "matches": [
-        "https://*.atlassian.net/*"
-      ],
-      "js": ["tmvh.js"]
-    }]
+      "matches": ["*://*.atlassian.net/*"],
+      "js": ["contentScript.js"]
+    }
+  ]
 }
